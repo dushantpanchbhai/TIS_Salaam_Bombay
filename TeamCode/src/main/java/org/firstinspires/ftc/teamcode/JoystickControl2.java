@@ -1,17 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Constants.DROP;
-import static org.firstinspires.ftc.teamcode.Constants.GRIP;
-import static org.firstinspires.ftc.teamcode.Constants.MIDDLE_POS;
-import static org.firstinspires.ftc.teamcode.Constants.PICK_POS;
-
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -23,7 +15,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
-import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 
 /**
@@ -39,9 +30,9 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 @Config
-@TeleOp(name="Joystick Control", group="Linear Opmode")
+@TeleOp(name="Joystick Control 2", group="Linear Opmode")
 //@Disabled
-public class JoystickControl extends LinearOpMode {
+public class JoystickControl2 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -121,7 +112,7 @@ public class JoystickControl extends LinearOpMode {
 
         while(opModeIsActive())
         {
-            drive.setWeightedDrivePower(new Pose2d(-gamepad1.left_stick_y/2,0,gamepad1.right_stick_x));
+            drive.setWeightedDrivePower(new Pose2d(-gamepad1.left_stick_y/2,0,-gamepad1.right_stick_x));
             //arm
             if(gamepad1.a)
             {
@@ -163,6 +154,11 @@ public class JoystickControl extends LinearOpMode {
             {
                 arm.setTargetPosition(15);
                 extension.setTargetPosition(50);
+            }
+            else if(gamepad1.dpad_left)
+            {
+                arm.setTargetPosition(-120);
+                extension.setTargetPosition(25);
             }
 
             if(gamepad1.right_trigger > 0)

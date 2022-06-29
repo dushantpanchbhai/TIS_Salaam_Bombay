@@ -118,6 +118,9 @@ public class SampleTankDrive extends TankDrive {
 
         // add/remove motors depending on your robot (e.g., 6WD)
 
+//        DcMotorEx leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
+//        DcMotorEx rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
+
         DcMotorEx leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");
         DcMotorEx rightRear = hardwareMap.get(DcMotorEx.class, "rightRear");
 
