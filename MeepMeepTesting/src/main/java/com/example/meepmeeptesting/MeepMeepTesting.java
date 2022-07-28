@@ -13,17 +13,18 @@ public class MeepMeepTesting {
     {
         MeepMeep meepMeep = new MeepMeep(800);
 
-        Pose2d start = new Pose2d(23,-60-6,Math.toRadians(0));
+        Pose2d start = new Pose2d(23 + 12,-66,Math.toRadians(0));
+        Pose2d shippingHub = new Pose2d(-16,-36-8,Math.toRadians(0));
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 11)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(start)
-                                .back(0.1)
-                                .splineTo(new Vector2d(-12,-36-8),Math.toRadians(180))
-//                                .splineToConstantHeading(new Vector2d(-12,-36-8),Math.toRadians(90))
-                                .strafeRight(0.1)
-                                .splineToConstantHeading(new Vector2d(23,-66),Math.toRadians(0))
+                        drive.trajectorySequenceBuilder(shippingHub)
+//                                .back(8)
+//                                .splineTo(new Vector2d(-16,-36-8),Math.toRadians(180))
+                                .strafeRight(25)
+                                .forward(40)
+                                .forward(8) //8
                                 .build()
                 );
 
